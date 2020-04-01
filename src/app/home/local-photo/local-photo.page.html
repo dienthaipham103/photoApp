@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Local Photos ({{photoService.photos.length}})</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+    <ion-col size="4" 
+      *ngFor="let photo of photoService.photos; index as position">
+      <ion-img src="{{ photo.base64 ? photo.base64 : photo.webviewPath }}" [routerLink]="['/detail-photo', position]">
+      </ion-img>
+    </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- ion-fab markup  -->
+</ion-content>
+
+<ion-item>
+  <ion-label>More</ion-label>
+  <ion-select interface="action-sheet" #mySelect (ionChange)="onAll(mySelect.value)" 
+  [value]="current_status" [selectedText]="current_status">
+    <ion-select-option value="Delete">Delete All</ion-select-option>
+    <ion-select-option value="Upload">Upload All</ion-select-option>
+  </ion-select>
+</ion-item>

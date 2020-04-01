@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/local-photo"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Photo</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="onDeletePhoto(photoId)">
+        <ion-icon name="trash" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content (swipe)="swipeEvent($event)" padding>
+  <ion-img src="{{ loadedPhoto.base64 ? loadedPhoto.base64 : loadedPhoto.webviewPath }}">
+  </ion-img>
+</ion-content>
+
